@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 // Connect to MongoDB
 const uri = process.env.MONGODB_URI;
 
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(uri)
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.error('MongoDB connection error:', err));
 
