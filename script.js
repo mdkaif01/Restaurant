@@ -18,7 +18,7 @@ document.getElementById('reservation-form').addEventListener('submit', async fun
     if (!confirmation) return; // If user cancels, stop submission
 
     // Send reservation data to the server
-    await fetch('http://localhost:5000/reservations', {
+    await fetch('https://restaurant-hrn9.onrender.com', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -40,7 +40,7 @@ async function fetchMenu() {
     menuDiv.innerHTML = ''; // Clear any previous content
 
     try {
-        const response = await fetch('http://localhost:5000/api/menu');
+        const response = await fetch('https://restaurant-hrn9.onrender.com');
         const menuItems = await response.json();
 
         menuItems.forEach(item => {
