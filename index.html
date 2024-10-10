@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Booking</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Restaurant</h1>
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#reservations">Reservations</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="menu">
+            <h2>Menu</h2>
+            <div id="loading-spinner" style="display: none;">Loading...</div>
+            <div id="menu-items">
+                <!-- Menu items will be fetched dynamically here -->
+            </div>
+        </section>
+
+        <section id="reservations">
+            <h2>Make a Reservation</h2>
+            <form id="reservation-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="time">Time:</label>
+                <input type="time" id="time" name="time" required>
+
+                <label for="people">Number of People:</label>
+                <input type="number" id="people" name="people" required min="1">
+
+                <button type="submit">Reserve</button>
+            </form>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>Email: uchiha.madara@funfood.com</p>
+            <p>Phone: 9651277125</p>
+            <p>Address: Mughalsarai, Chandauli</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 FunFood. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script> <!-- Link to your JavaScript file -->
+</body>
+</html>
