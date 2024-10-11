@@ -9,13 +9,23 @@ document.getElementById('reservation-form').addEventListener('submit', async fun
         people: document.getElementById('people').value
     };
 
-    const confirmation = confirm(`Confirm Reservation:
-    Name: ${reservationData.name}
-    Date: ${reservationData.date}
-    Time: ${reservationData.time}
-    People: ${reservationData.people}`);
+    // Set modal details for confirmation
+    document.getElementById('modal-details').innerText = `
+        Name: ${reservationData.name}
+        Date: ${reservationData.date}
+        Time: ${reservationData.time}
+        People: ${reservationData.people}`;
+    document.getElementById('modal').style.display = 'block';
+});
 
-    if (!confirmation) return; // If user cancels, stop submission
+// Confirm reservation
+document.getElementById('confirm-button').onclick = async function() {
+    const reservationData = {
+        name: document.getElementById('name').value,
+        date: document.getElementById('date').value,
+        time: document.getElementById('time').value,
+        people: document.getElementById('people').value
+    };
 
     // Send reservation data to the server
     await fetch('https://restaurant-hrn9.onrender.com/reservations', {
@@ -27,9 +37,20 @@ document.getElementById('reservation-form').addEventListener('submit', async fun
     });
 
     // Reset the form and show success message
-    this.reset();
+    document.getElementById('reservation-form').reset();
     alert('Reservation made successfully!');
-});
+    document.getElementById('modal').style.display = 'none';
+};
+
+// Cancel reservation
+document.getElementById('cancel-button').onclick = function() {
+    document.getElementById('modal').style.display = 'none';
+};
+
+// Close modal
+document.getElementById('close-modal').onclick = function() {
+    document.getElementById('modal').style.display = 'none';
+};
 
 // Fetch menu items from the server and display them
 async function fetchMenu() {
@@ -54,7 +75,8 @@ async function fetchMenu() {
             menuDiv.appendChild(itemDiv);
         });
     } catch (error) {
-        menuDiv.innerHTML = '<p>Error loading menu items. Please try again later.</p>';
+        menuDiv.innerHTML = '<p>Error loading menu items. Please check your connection and try again later.</p>';
+        console.error('Error fetching menu:', error); // Log error for debugging
     } finally {
         spinner.style.display = 'none'; // Hide spinner once done
     }

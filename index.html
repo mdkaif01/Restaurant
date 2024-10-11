@@ -10,7 +10,7 @@
 <body>
     <header>
         <h1>Welcome to Our Restaurant</h1>
-        <nav>
+        <nav role="navigation" aria-label="Main Navigation">
             <ul>
                 <li><a href="#menu">Menu</a></li>
                 <li><a href="#reservations">Reservations</a></li>
@@ -22,7 +22,7 @@
     <main>
         <section id="menu">
             <h2>Menu</h2>
-            <div id="loading-spinner" style="display: none;">Loading...</div>
+            <div id="loading-spinner" class="loading-spinner" style="display: none;"></div>
             <div id="menu-items">
                 <!-- Menu items will be fetched dynamically here -->
             </div>
@@ -32,16 +32,16 @@
             <h2>Make a Reservation</h2>
             <form id="reservation-form">
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name" required aria-label="Enter your name">
 
                 <label for="date">Date:</label>
-                <input type="date" id="date" name="date" required>
+                <input type="date" id="date" name="date" required aria-label="Select reservation date">
 
                 <label for="time">Time:</label>
-                <input type="time" id="time" name="time" required>
+                <input type="time" id="time" name="time" required aria-label="Select reservation time">
 
                 <label for="people">Number of People:</label>
-                <input type="number" id="people" name="people" required min="1">
+                <input type="number" id="people" name="people" required min="1" aria-label="Number of people for the reservation">
 
                 <button type="submit">Reserve</button>
             </form>
@@ -57,7 +57,22 @@
 
     <footer>
         <p>&copy; 2024 FunFood. All rights reserved.</p>
+        <p>Follow us on 
+            <a href="https://x.com/Mohamma34525340" target="_blank">Twitter</a>, 
+            <a href="https://www.facebook.com/profile.php?id=100014093195958" target="_blank">Facebook</a>, 
+            <a href="https://www.instagram.com/__zenitsu_1112?igsh=azd3Z2wwaWVvNzI0" target="_blank">Instagram</a>
+        </p>
     </footer>
+
+    <div id="modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" id="close-modal">&times;</span>
+            <h2>Confirm Reservation</h2>
+            <p id="modal-details"></p>
+            <button id="confirm-button">Confirm</button>
+            <button id="cancel-button">Cancel</button>
+        </div>
+    </div>
 
     <script src="script.js"></script> <!-- Link to your JavaScript file -->
 </body>
